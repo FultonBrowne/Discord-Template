@@ -1,8 +1,8 @@
 package bot
 
 import (
-	"Test/config"
-	"Test/utils"
+	"DiscordBot/config"
+	"DiscordBot/utils"
 	"fmt"
 	"github.com/bwmarrin/discordgo"
 	"os"

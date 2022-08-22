@@ -1,8 +1,8 @@
 package main
 
 import(
-	"Test/bot"
-	"Test/config"
+	"DiscordBot/bot"
+	"DiscordBot/config"
 	"fmt"
 )
 
