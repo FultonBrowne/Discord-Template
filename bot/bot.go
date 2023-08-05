@@ -48,11 +48,9 @@ func message(bot *discordgo.Session, message *discordgo.MessageCreate) {
 		ping := bot.HeartbeatLatency().Truncate(60)
 		if message.Content == "&ping" {
 			bot.ChannelMessageSend(message.ChannelID,`My latency is **` + ping.String() + `**!`)
-		}
-		if message.Content == "&author" {
+		} else if message.Content == "&author" {
 			bot.ChannelMessageSend(message.ChannelID, "My author is Gonz#0001, I'm only a template discord bot made in golang.")
-		}
-		if message.Content == "&github" {
+		} else if message.Content == "&github" {
 			embed := embed.NewEmbed().
 				SetAuthor(message.Author.Username, message.Author.AvatarURL("1024")).
 				SetThumbnail(message.Author.AvatarURL("1024")).
@@ -60,8 +58,7 @@ func message(bot *discordgo.Session, message *discordgo.MessageCreate) {
 				SetDescription("You can find my repository by clicking [here](https://github.com/gonzyui/Discord-Template).").
 				SetColor(0x00ff00).MessageEmbed
 			bot.ChannelMessageSendEmbed(message.ChannelID, embed)
-		}
-		if message.Content == "&botinfo" {
+		} else if message.Content == "&botinfo" {
 			guilds := len(bot.State.Guilds)
 			embed := embed.NewEmbed().
 				SetTitle("My informations").
@@ -72,6 +69,8 @@ func message(bot *discordgo.Session, message *discordgo.MessageCreate) {
 				AddField("Latency:", ping.String()).
 				AddField("Total guilds:", strconv.Itoa(guilds)).MessageEmbed
 			bot.ChannelMessageSendEmbed(message.ChannelID, embed)
+		} else {
+			
 		}
 	}
 }
